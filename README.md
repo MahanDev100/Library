@@ -14,4 +14,7 @@ You can add, remove, search, and view all books in your library.
 ## How to Run
 
 1. Make sure you have **Python 3** installed.  
-2. Clone or download the repository
+2. Clone or download the repository:  
+
+```bash
+git clone https://github.com/MahanDev100/Library.git
