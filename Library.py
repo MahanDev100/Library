@@ -1,5 +1,5 @@
 class Book:
-    def __init__(self, title, author, year):
+    def __init__(self, title: str, author: str, year: int):
         self.title = title
         self.author = author
         self.year = year
@@ -12,27 +12,27 @@ class Library:
     def __init__(self):
         self.books = []
 
-    def add_book(self, book):
+    def add_book(self, book: Book) -> None:
         self.books.append(book)
         print("✅ Book added successfully.")
 
-    def remove_book(self, title):
+    def remove_book(self, title: str) -> None:
         for book in self.books:
-            if book.title == title:
+            if book.title.lower() == title.lower():
                 self.books.remove(book)
                 print("❌ Book removed successfully.")
                 return
         print("⚠ No book found with that title.")
 
-    def search_book(self, title):
+    def search_book(self, title: str) -> None:
         for book in self.books:
-            if book.title == title:
+            if book.title.lower() == title.lower():
                 print("📘 Book found:")
                 print(book)
                 return
         print("⚠ No book found with that title.")
 
-    def show_all_books(self):
+    def show_all_books(self) -> None:
         if not self.books:
             print("📭 No books in the library.")
         else:
@@ -57,7 +57,13 @@ def main():
         if choice == "1":
             title = input("Enter book title: ")
             author = input("Enter author name: ")
-            year = int(input("Enter publication year: "))
+
+            try:
+                year = int(input("Enter publication year: "))
+            except ValueError:
+                print("⚠ Year must be a number.")
+                continue
+
             book = Book(title, author, year)
             library.add_book(book)
 
